@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Jump_Movement_Menu : MonoBehaviour
+public class Jump_Movement : MonoBehaviour
 {
     private const float PI = 3.141592f;
     private const float COLL_CHECK_TOL = 0.2f;
@@ -20,7 +20,7 @@ public class Jump_Movement_Menu : MonoBehaviour
     public bool enableDoubleJump = true;
     public bool wallHitJumpReset = true;
     public float baseRotationSpeed = 1.0f;
-    public float rotationSpeed = 250.0f;
+    public float rotationSpeed = 650.0f;
     public float rotationAmlipfier = 2.0f;
 
     public float lowJumpMultiplyer = 2.0f;
@@ -35,7 +35,8 @@ public class Jump_Movement_Menu : MonoBehaviour
     private bool facingRight = true;
 
     private float currentRotation = 0.0f;
-    
+
+    // Update is called once per frame
     void Update()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
