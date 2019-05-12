@@ -72,9 +72,9 @@ GameObject:
   - component: {fileID: 8462369995639352150}
   - component: {fileID: 8462369995639352151}
   - component: {fileID: 8462369995639352148}
-  - component: {fileID: 8462369995639352147}
   - component: {fileID: 2143304756865156349}
   - component: {fileID: 5087704588951487487}
+  - component: {fileID: 5118445423635530506}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -135,7 +135,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c7dfa8a969745884d9def6b25e43727b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad2d1ada6900ddf46a8544a805c9874a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -193,22 +193,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.35, y: 0.35}
   m_EdgeRadius: 0.08
---- !u!114 &8462369995639352147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8462369995639352149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 962f949fa6ce6ce4a99dd2d2f16e695f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firepoint: {fileID: 8462369994745321427}
-  bulletPrefab: {fileID: 59135123323141378, guid: 1b12ed34222a1b443834afb0a542ec0d,
-    type: 3}
-  fireRate: 0.3
 --- !u!114 &2143304756865156349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,3 +233,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be14360ccda45544c95106f1bb1e5be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5118445423635530506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462369995639352149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33aa4f82896ecfb4682a6c854eff779f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firepoint: {fileID: 8462369994745321427}
+  bulletPrefab: {fileID: 59135123323141378, guid: 1b12ed34222a1b443834afb0a542ec0d,
+    type: 3}
+  fireRate: 0.3
