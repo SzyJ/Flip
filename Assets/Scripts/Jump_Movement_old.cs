@@ -88,8 +88,6 @@ public class Jump_Movement : MonoBehaviour
         newXVel = Mathf.Sin(accelScale) * maxSpeed;
         rb.velocity = new Vector2(newXVel, yVel);
 
-        float vertical = Input.GetAxis("Vertical");
-
         if (onTheGround)
         {
             currentRotation = 0.0f;
@@ -115,7 +113,7 @@ public class Jump_Movement : MonoBehaviour
             flip();
         }
 
-        if (vertical > 0.1f)
+        if (Input.GetButton("Jump"))
         {
             if (!jumpKeyDown) // First Frame
             {

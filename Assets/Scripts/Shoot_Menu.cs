@@ -13,10 +13,28 @@ public class Shoot_Menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (fireCooldown <= 0.0f && Input.GetButton("Fire1"))
+        bool fireLeft = Input.GetButton("Fire1");
+        bool fireRight = Input.GetButton("Fire2");
+        bool fireUp = Input.GetButton("Fire3");
+
+        if (fireCooldown <= 0.0f && (fireLeft || fireRight || fireUp))
         {
             fireCooldown = fireRate;
-            shoot();
+
+            Quaternion direction = new Quaternion(0, 0, 0, 0);
+
+            if (fireRight)
+            {
+                direction = new Quaternion(0, 0, 0, 0);
+            } else if (fireLeft)
+            {
+                direction = new Quaternion(0, 0, 180, 0);
+            } else if (fireUp)
+            {
+                direction = new Quaternion(0, 0, 90, 0);
+            }
+
+            shoot(direction);
         }
         else if (fireCooldown > 0.0f)
         {
@@ -24,8 +42,9 @@ public class Shoot_Menu : MonoBehaviour
         }
     }
 
-    private void shoot()
+    private void shoot(Quaternion direction)
     {
-        Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
+        // TODO: Influence direction based on firepoint.rotation
+        Instantiate(bulletPrefab, firepoint.position, direction);
     }
 }
