@@ -60,4 +60,14 @@ public class Game_Controller : MonoBehaviour
         }
         ++enemiesKilled;
     }
+
+    void PrintGameSummary()
+    {
+        string template = "Enemies Killed: {0}\nTime Survived: {1}\n";
+        string deathTemplate = "Death Penalty: 70%\n";
+        string totalTemplate = "\nTotal Score: {2}";
+
+
+
+    }
 }
