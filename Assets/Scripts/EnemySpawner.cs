@@ -11,44 +11,39 @@ public class EnemySpawner : MonoBehaviour
     public float changeDelay = 1000;
 
     private float timeRemaining = 0;
-    private GameObject enemyObject = null;
 
-    public static int score = 0; 
+    public static int score = 0;
+
+    public int enemySpawnLimit = 5;
+
+    private int enemiesSpawned = 0;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Cancel"))
-        {
-            Application.Quit();
-        }
-
         if (timeRemaining <= 0)
         {
-            if (enemyObject != null)
-            {
-                Destroy(enemyObject);
-            }
+            //if (enemyObject != null)
+            //{
+            //    Destroy(enemyObject);
+            //}
             timeRemaining = changeDelay;
 
             int spawnPoint = Random.Range(0, spawnPoints.Length - 1);
 
-            enemyObject = (GameObject) Instantiate(enemyPrefab, spawnPoints[spawnPoint].transform);
+            Instantiate(enemyPrefab, spawnPoints[spawnPoint].transform);
+            ++enemiesSpawned;
         }
 
-        timeRemaining -= Time.deltaTime;
+        if (enemiesSpawned < enemySpawnLimit)
+        {
+            timeRemaining -= Time.deltaTime;
+        }
     }
 
-    public int getScore()
-    {
-        return score;
-    }
 
     public void onKill()
     {
-        score += 100;
-
-        Debug.Log("Score is: " + score);
-        timeRemaining = 0;
+        --enemiesSpawned;
     }
 }
