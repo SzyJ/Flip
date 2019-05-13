@@ -73,8 +73,8 @@ GameObject:
   - component: {fileID: 8462369995639352151}
   - component: {fileID: 8462369995639352148}
   - component: {fileID: 2143304756865156349}
-  - component: {fileID: 5087704588951487487}
   - component: {fileID: 5118445423635530506}
+  - component: {fileID: 5957300193052826944}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -221,18 +221,6 @@ MonoBehaviour:
   rotationSpeed: 650
   rotationAmlipfier: 2
   lowJumpMultiplyer: 2
---- !u!114 &5087704588951487487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8462369995639352149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be14360ccda45544c95106f1bb1e5be2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5118445423635530506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,3 +237,16 @@ MonoBehaviour:
   bulletPrefab: {fileID: 59135123323141378, guid: 1b12ed34222a1b443834afb0a542ec0d,
     type: 3}
   fireRate: 0.3
+--- !u!114 &5957300193052826944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462369995639352149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be14360ccda45544c95106f1bb1e5be2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  game: {fileID: 0}

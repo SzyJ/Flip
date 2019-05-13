@@ -46,10 +46,13 @@ public class Ghost_Movement : MonoBehaviour
         if (hitInfo.name == "projectile(Clone)")
         {
             Destroy();
+            return;
         }
 
-        if (hitInfo.name == "player")
+        PlayerChar player = hitInfo.GetComponent<PlayerChar>();
+        if (player != null)
         {
+            Debug.Log("Player Killed!");
             game.PlayerDied();
         }
     }
