@@ -124,6 +124,11 @@ MonoBehaviour:
   warnSprite: {fileID: 21300000, guid: 4efd65f2292b3dc4bb0a213aadb164cf, type: 3}
   attackSprite: {fileID: 21300000, guid: 1baef2c1ec91ba64e907e731c3b2f8ea, type: 3}
   flySpeed: 10
+  warningTime: 1
+  attackTime: 1
+  attackDistance: 2
+  attackDelay: 5
+  delayTimer: 0
 --- !u!50 &4901493184402451847
 Rigidbody2D:
   serializedVersion: 4

@@ -14,7 +14,7 @@ public class Ghost_Movement : MonoBehaviour
     public float warningTime = 1.0f;
     public float attackTime = 1.0f;
 
-    public float attackDistance = 3.0f;
+    public float attackDistance = 2.0f;
 
     public float attackDelay = 5.0f;
     public float delayTimer = 0.0f;

@@ -15,9 +15,8 @@ public class Shoot_Menu : MonoBehaviour
     {
         bool fireLeft = Input.GetButton("Fire1");
         bool fireRight = Input.GetButton("Fire2");
-        bool fireUp = Input.GetButton("Fire3");
 
-        if (fireCooldown <= 0.0f && (fireLeft || fireRight || fireUp))
+        if (fireCooldown <= 0.0f && (fireLeft || fireRight))
         {
             fireCooldown = fireRate;
 
@@ -29,9 +28,6 @@ public class Shoot_Menu : MonoBehaviour
             } else if (fireLeft)
             {
                 direction = new Quaternion(0, 0, 180, 0);
-            } else if (fireUp)
-            {
-                direction = new Quaternion(0, 0, 90, 0);
             }
 
             shoot(direction);
