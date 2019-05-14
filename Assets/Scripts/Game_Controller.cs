@@ -62,6 +62,7 @@ public class Game_Controller : MonoBehaviour
     {
         if (gameRunning)
         {
+            Destroy(GameObject.Find("Player"), 0.0f);
             PrintGameSummary(false);
         }
         
@@ -71,6 +72,7 @@ public class Game_Controller : MonoBehaviour
     {
         if (gameRunning)
         {
+            Destroy(GameObject.Find("Player"), 0.0f);
             PrintGameSummary(true);
         }
         

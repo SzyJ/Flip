@@ -7,7 +7,8 @@ public class Shoot_Menu : MonoBehaviour
     public Transform firepoint;
     public GameObject bulletPrefab;
     public float fireRate = 0.3f;
-
+    
+    public AudioSource audioPlayer;
     private float fireCooldown = 0f;
 
     // Update is called once per frame
@@ -40,6 +41,7 @@ public class Shoot_Menu : MonoBehaviour
 
     private void shoot(Quaternion direction)
     {
+        audioPlayer.Play();
         // TODO: Influence direction based on firepoint.rotation
         Instantiate(bulletPrefab, firepoint.position, direction);
     }

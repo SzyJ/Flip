@@ -27,8 +27,11 @@ public class Ghost_Movement : MonoBehaviour
 
     private bool attacking = false;
     private bool attackDone = false;
+    private bool soundPlayed = false;
     private float attackingTime;
 
+    public AudioSource deathSound;
+    public AudioSource attackSound;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +39,7 @@ public class Ghost_Movement : MonoBehaviour
         player = GameObject.Find("Player");
         if (!player)
         {
-            Destroy();
+            Destroy(gameObject);
         }
 
         game = GameObject.Find("Game_Controller").GetComponent<Game_Controller>();
@@ -47,6 +50,11 @@ public class Ghost_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            return;
+        }
+        
         float delta = Time.deltaTime;
 
         float destX = player.transform.position.x;
@@ -83,6 +91,12 @@ public class Ghost_Movement : MonoBehaviour
     {
         attackingTime += delta;
         
+        if (!soundPlayed)
+        {
+            attackSound.Play();
+            soundPlayed = true;
+        }
+
         if (attackingTime < warningTime)
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = warnSprite;
@@ -107,6 +121,7 @@ public class Ghost_Movement : MonoBehaviour
         {
             attackDone = false;
             attacking = false;
+            soundPlayed = false;
             attackingTime = 0.0f;
             delayTimer = attackDelay;
         }
@@ -119,13 +134,16 @@ public class Ghost_Movement : MonoBehaviour
 
         if (hitInfo.name == "projectile(Clone)")
         {
-            Destroy();
+            Kill();
             return;
         }
     }
 
-    void Destroy()
+    void Kill()
     {
+
+        Debug.Log("Ghost Killed!!!!");
+        deathSound.Play();
         game.EnemyKilled();
         Destroy(gameObject);
     }
