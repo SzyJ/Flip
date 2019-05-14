@@ -14,7 +14,7 @@ public class Ghost_Movement : MonoBehaviour
     public float warningTime = 1.0f;
     public float attackTime = 1.0f;
 
-    public float attackDistance = 0.7f;
+    public float attackDistance = 3.0f;
 
     public float attackDelay = 5.0f;
     public float delayTimer = 0.0f;
@@ -52,33 +52,28 @@ public class Ghost_Movement : MonoBehaviour
 
         Vector2 flyDirection = new Vector2(destX - transform.position.x, destY - transform.position.y);
 
-        if (delayTimer <= 0.0f || attacking)
-        {
-            attacking = (flyDirection.magnitude < attackDistance);
-        }
-        else
-        {
-            attacking = false;
-            delayTimer -= delta;
-        }
-        
-
-        if (!attacking)
-        {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = normalSprite;
-            attackingTime = 0.0f;
-      
-            //flyDirection.Normalize();
-            flyDirection *= delta * flySpeed;
-            
-            GetComponent<Rigidbody2D>().velocity = flyDirection;
-        }
-        else
+        if (attacking)
         {
             inAttack(delta);
+            GetComponent<Rigidbody2D>().transform.eulerAngles = new Vector3(0.0f, (flyDirection.x > 0) ? 0.0f : 180.0f, Mathf.Sin(attackingTime * 20.0f) * 10.0f);
+            return;
         }
 
-        GetComponent<Rigidbody2D>().transform.eulerAngles = new Vector3(0.0f, (flyDirection.x > 0) ? 0.0f : 180.0f, Mathf.Sin(attackingTime * 20.0f) * 10.0f);
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = normalSprite;
+        attackingTime = 0.0f;
+
+        if (delayTimer > 0.0f)
+        {
+            delayTimer -= delta;
+        }
+
+        attacking = delayTimer <= 0.0f && (flyDirection.magnitude < attackDistance);
+    
+        //flyDirection.Normalize();
+        flyDirection *= delta * flySpeed;
+        GetComponent<Rigidbody2D>().velocity = flyDirection;
+
+        GetComponent<Rigidbody2D>().transform.eulerAngles = new Vector3(0.0f, (flyDirection.x > 0) ? 0.0f : 180.0f, 0.0f);
         
     }
 
@@ -96,6 +91,7 @@ public class Ghost_Movement : MonoBehaviour
         }
         else
         {
+            attacking = false;
             attackingTime = 0.0f;
             delayTimer = attackDelay;
         }
