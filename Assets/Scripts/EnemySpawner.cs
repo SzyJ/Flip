@@ -18,15 +18,15 @@ public class EnemySpawner : MonoBehaviour
 
     private int enemiesSpawned = 0;
 
+    private float cumulitiveTime = 0.0f;
+
     // Update is called once per frame
     void Update()
     {
+        float delta = Time.deltaTime;
+        cumulitiveTime += delta;
         if (timeRemaining <= 0)
         {
-            //if (enemyObject != null)
-            //{
-            //    Destroy(enemyObject);
-            //}
             timeRemaining = changeDelay;
 
             int spawnPoint = Random.Range(0, spawnPoints.Length - 1);
@@ -37,11 +37,10 @@ public class EnemySpawner : MonoBehaviour
 
         if (enemiesSpawned < enemySpawnLimit)
         {
-            timeRemaining -= Time.deltaTime;
+            timeRemaining -= delta * Mathf.Sqrt(cumulitiveTime * 0.1f);
         }
     }
-
-
+    
     public void onKill()
     {
         --enemiesSpawned;
