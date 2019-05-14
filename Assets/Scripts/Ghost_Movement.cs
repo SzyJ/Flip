@@ -8,6 +8,7 @@ public class Ghost_Movement : MonoBehaviour
     public Sprite warnSprite;
     public Sprite attackSprite;
 
+    public GameObject attackEffect;
 
     public float flySpeed = 10.0f;
 
@@ -25,6 +26,7 @@ public class Ghost_Movement : MonoBehaviour
     private SpriteRenderer renderer;
 
     private bool attacking = false;
+    private bool attackDone = false;
     private float attackingTime;
 
 
@@ -54,7 +56,7 @@ public class Ghost_Movement : MonoBehaviour
 
         if (attacking)
         {
-            inAttack(delta);
+            inAttack(delta, flyDirection.magnitude);
             GetComponent<Rigidbody2D>().transform.eulerAngles = new Vector3(0.0f, (flyDirection.x > 0) ? 0.0f : 180.0f, Mathf.Sin(attackingTime * 20.0f) * 10.0f);
             return;
         }
@@ -77,7 +79,7 @@ public class Ghost_Movement : MonoBehaviour
         
     }
 
-    void inAttack(float delta)
+    void inAttack(float delta, float playerDist)
     {
         attackingTime += delta;
         
@@ -88,9 +90,22 @@ public class Ghost_Movement : MonoBehaviour
         else if (attackingTime < warningTime + attackTime) 
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = attackSprite;
+            if (!attackDone)
+            {
+                Instantiate(attackEffect, transform.position, transform.rotation);
+                attackDone = true;
+            }
+
+            if (playerDist < 1.0f &&
+                attackingTime < warningTime + 0.02f)
+            {
+                game.PlayerDied();
+            }
+            
         }
         else
         {
+            attackDone = false;
             attacking = false;
             attackingTime = 0.0f;
             delayTimer = attackDelay;
@@ -106,13 +121,6 @@ public class Ghost_Movement : MonoBehaviour
         {
             Destroy();
             return;
-        }
-
-        PlayerChar player = hitInfo.GetComponent<PlayerChar>();
-        if (player != null)
-        {
-            Debug.Log("Player Killed!");
-            game.PlayerDied();
         }
     }
 

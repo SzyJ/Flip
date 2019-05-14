@@ -123,6 +123,8 @@ MonoBehaviour:
   normalSprite: {fileID: 21300000, guid: 07f222f99a1a47649a549edf56235bf9, type: 3}
   warnSprite: {fileID: 21300000, guid: 4efd65f2292b3dc4bb0a213aadb164cf, type: 3}
   attackSprite: {fileID: 21300000, guid: 1baef2c1ec91ba64e907e731c3b2f8ea, type: 3}
+  attackEffect: {fileID: 7141671458569140395, guid: c8ff6f484d064fd459bcf7b71f0b7d33,
+    type: 3}
   flySpeed: 10
   warningTime: 1
   attackTime: 1

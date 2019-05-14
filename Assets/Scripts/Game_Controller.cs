@@ -60,12 +60,20 @@ public class Game_Controller : MonoBehaviour
 
     void GameEnd()
     {
-        PrintGameSummary(false);
+        if (gameRunning)
+        {
+            PrintGameSummary(false);
+        }
+        
     }
 
     public void PlayerDied()
     {
-        PrintGameSummary(true);
+        if (gameRunning)
+        {
+            PrintGameSummary(true);
+        }
+        
     }
 
     public void EnemyKilled()
